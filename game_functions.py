@@ -8,16 +8,16 @@ def display_score(snake, screen):
     screen.blit(score, (1000, 10))
 
 
-def game_over(screen, snake):
-    screen.fill((230, 230, 230))
+def game_over(screen, snake, background):
+    screen.blit(background, (0, 0))
     font = pygame.font.SysFont("arial", 50)
     message1 = font.render("Game Over", True, (255, 0, 0))
-    message2 = font.render(f"Score: {snake.snake_length}", True, (0, 0, 255))
+    message2 = font.render(f"Score: {snake.snake_length}", True, (255, 87, 51))
     message3 = font.render(
         "Press Space to start or ESC to quit", True, (0, 255, 0))
-    screen.blit(message1, (300, 300))
-    screen.blit(message2, (300, 350))
-    screen.blit(message3, (300, 400))
+    screen.blit(message1, (550, 300))
+    screen.blit(message2, (600, 400))
+    screen.blit(message3, (300, 500))
     pygame.display.flip()
 
 
@@ -72,8 +72,8 @@ def check_edges(snake, screen):
         snake.x[0] = screen_rect.left
 
 
-def update(snake, apple, screen):
-    screen.fill((230, 230, 230))
+def update(snake, apple, screen, background):
+    screen.blit(background, (0, 0))
     snake.slither()
     apple.blit_apple()
     display_score(snake, screen)
